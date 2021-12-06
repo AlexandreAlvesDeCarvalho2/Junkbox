@@ -8,6 +8,6 @@ import com.java.entity.Music;
 public interface MusicasDAO {
 	
 	
-	public List<Music> buscarPorNome(String nome);
+	public List<Music> buscarPorNome(int nome);
 	
 }

@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jarvis.DBFactory.DbMananger;
-
+import com.java.DbMananger;
 import com.java.entity.Biblioteca;
 
 public class BibliotecaDAOImpl implements BibliotecaDAO {
@@ -17,25 +16,30 @@ public class BibliotecaDAOImpl implements BibliotecaDAO {
 	PreparedStatement pstmt = null;
 
 	@Override
-	public List<Biblioteca> pegarAlbum(String albumDaBiblioteca) {
+	public List<Biblioteca> pegarAlbum(int albumDaBiblioteca) {
 
 		List<Biblioteca> albuns = new ArrayList<Biblioteca>();
 		ResultSet rs = null;
 
 		try {
 			conexao = DbMananger.obterConexao();
-			pstmt = conexao.prepareStatement("select * from ALBUM"
-					+ " a inner join T_BIBLI b on(b.ID_BIBLI = a.ID_ALBUM_BIBLI)" + " where LISTMUSICA = ?");
+			pstmt = conexao.prepareStatement("select * from T_MUSICA"
+					+ " m inner join ALBUM a on(a.ID_ALBUM = m.ID_MUSICA_ALBUM)" + " where ID_MUSICA_ALBUM = ?");
 
-			pstmt.setString(1, albumDaBiblioteca);
+			pstmt.setInt(1, albumDaBiblioteca);
 
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 
 				Biblioteca album = new Biblioteca();
-
-				album.setAlbum(rs.getString("LISTMUSICA"));
+				
+				album.setNomeAlbum(rs.getString("LISTMUSICA"));
+				album.setAlbum(rs.getString("NM_MUSICA"));
+				album.setId(rs.getInt("ID_MUSICA"));
+				
+				
+				
 
 				albuns.add(album);
 			}
@@ -73,6 +77,7 @@ public class BibliotecaDAOImpl implements BibliotecaDAO {
 				Biblioteca lista = new Biblioteca();
 
 				lista.setAlbum(rs.getString("LISTMUSICA"));
+				lista.setId(rs.getInt("ID_ALBUM"));
 
 				listas.add(lista);
 			}

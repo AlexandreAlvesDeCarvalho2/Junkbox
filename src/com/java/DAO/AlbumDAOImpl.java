@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jarvis.DBFactory.DbMananger;
+import com.java.DbMananger;
 import com.java.entity.Album;
 
 
@@ -19,7 +19,7 @@ public class AlbumDAOImpl implements AlbumDAO{
 	PreparedStatement pstmt = null;
 
 	@Override
-	public List<Album> pegarMusica(String musicsDoAlbum) {
+	public List<Album> pegarMusica(int musicsDoAlbum) {
 			
 		
 			List<Album> musicas = new ArrayList<Album>();
@@ -27,12 +27,11 @@ public class AlbumDAOImpl implements AlbumDAO{
 
 			try {
 				conexao = DbMananger.obterConexao();
-					pstmt = conexao.prepareStatement("select * from T_MUSICA"
-							+ " m inner join ALBUM a on(a.ID_ALBUM = m.ID_MUSICA_ALBUM)"
-							+ " where NM_MUSICA = ?");
+					pstmt = conexao.prepareStatement("select * from T_MUSICA m inner join ALBUM a on(a.ID_ALBUM = m.ID_MUSICA_ALBUM) where ID_MUSICA = ?");
 				
 					
-				pstmt.setString(1, musicsDoAlbum);
+				pstmt.setInt(1, musicsDoAlbum);
+				
 					
 					
 					
@@ -44,6 +43,7 @@ public class AlbumDAOImpl implements AlbumDAO{
 						Album musica = new Album();
 						
 						musica.setMusicas(rs.getString("NM_MUSICA"));
+						musica.setId(rs.getInt("ID_MUSICA"));
 						
 
 						musicas.add(musica);
@@ -85,6 +85,8 @@ public class AlbumDAOImpl implements AlbumDAO{
 					Album musica = new Album();
 					
 					musica.setMusicas(rs.getString("NM_MUSICA"));
+					musica.setId(rs.getInt("ID_MUSICA"));
+					
 					
 
 					musicas.add(musica);

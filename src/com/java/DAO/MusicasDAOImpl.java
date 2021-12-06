@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jarvis.DBFactory.DbMananger;
+import com.java.DbMananger;
 import com.java.entity.Music;
 
 public class MusicasDAOImpl implements MusicasDAO {
@@ -16,7 +16,7 @@ public class MusicasDAOImpl implements MusicasDAO {
 	PreparedStatement pstmt = null;
 
 	@Override
-	public List<Music> buscarPorNome(String nome) {
+	public List<Music> buscarPorNome(int nome) {
 		
 		List<Music> musicas = new ArrayList<Music>();
 		ResultSet rs = null;
@@ -25,9 +25,9 @@ public class MusicasDAOImpl implements MusicasDAO {
 			conexao = DbMananger.obterConexao();
 			pstmt = conexao.prepareStatement("select * from T_MUSICA"
 					+ " m inner join ALBUM a on(a.ID_ALBUM = m.ID_MUSICA_ALBUM)"
-					+ " where NM_MUSICA = ?");
+					+ " where ID_MUSICA = ?");
 			
-			pstmt.setString(1, nome);
+			pstmt.setInt(1, nome);
 				
 			
 			rs = pstmt.executeQuery();

@@ -7,7 +7,7 @@ import com.java.entity.Biblioteca;
 
 public interface BibliotecaDAO {
 	
-	public List <Biblioteca> pegarAlbum(String album);
+	public List <Biblioteca> pegarAlbum(int Numeroalbum);
 	
 	public List <Biblioteca> listarAlbuns();
 	

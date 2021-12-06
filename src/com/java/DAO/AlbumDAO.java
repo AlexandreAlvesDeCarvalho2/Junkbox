@@ -6,7 +6,7 @@ import com.java.entity.Album;
 
 public interface AlbumDAO {
 	
-	public List <Album> pegarMusica(String musica);
+	public List <Album> pegarMusica(int musica);
 	
 	public List <Album> listarMusicas();
 	

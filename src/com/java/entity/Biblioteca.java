@@ -9,6 +9,26 @@ public class Biblioteca {
 	
 	
 	private String album;
+	private int id;
+	private String nomeAlbum;
+	
+	
+
+	public String getNomeAlbum() {
+		return nomeAlbum;
+	}
+
+	public void setNomeAlbum(String nomeAlbum) {
+		this.nomeAlbum = nomeAlbum;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getAlbum() {
 		return album;
@@ -18,42 +38,46 @@ public class Biblioteca {
 		this.album = album;
 	}
 	
-	public void pegarAlbum(String album) {
-		
-		BibliotecaDAO dao = DaoFactory.getBibliotecaDAO();
-		
-		List<Biblioteca> albuns = dao.pegarAlbum(album);
-		System.out.println("---------------------------------------------\n"
-				+ "pegarAlbuns: ");
-		for (Biblioteca a : albuns) {
-			System.out.println(a.toString());
-		}
-		
-	}
+
 	public void listarAlbum() {
 		BibliotecaDAO dao = DaoFactory.getBibliotecaDAO();
 		List<Biblioteca> albuns = dao.listarAlbuns();
 		System.out.println("---------------------------------------------\n"
-				+ "listarAlbum: ");
+				+ "Selecione album: ");
 		for (Biblioteca a : albuns) {
 			System.out.println(a.toString());
 		}
 	}
+	public void pegarAlbum(int Numeroalbum) {
 	
+		BibliotecaDAO dao = DaoFactory.getBibliotecaDAO();
+		
+		List<Biblioteca> albuns = dao.pegarAlbum(Numeroalbum);
+		System.out.println("---------------------------------------------\n"
+				+ "Selecione musicas: " );
+		for (Biblioteca a : albuns) {
+			System.out.println(a.toString());
+		}
+		
+	}
 	
+
 	public Biblioteca() {
 		
 	}
-	public Biblioteca(String album) {
+	public Biblioteca(String album, int id, String nomeAlbum) {
 		super();
 		this.album = album;
+		this.id = id;
+		this.nomeAlbum = nomeAlbum;
 	}
 
 	@Override
 	public String toString() {
-		return album ;
+		return id + " - " + album ;
 	}
-	
+
+
 	
 
 }

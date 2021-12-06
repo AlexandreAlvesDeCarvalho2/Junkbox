@@ -9,7 +9,17 @@ import com.java.DAO.DaoFactory;
 public class Album {
 
 	private String musicas;
+	private int id;
+	
 		
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getMusicas() {
 		return musicas;
@@ -19,12 +29,12 @@ public class Album {
 		this.musicas = musicas;
 	}
 
-	public void pegarMusica(String nome) {
+	public void pegarMusica(int nome) {
 
 		AlbumDAO dao = DaoFactory.getAlbumDAO();
 		List<Album> musicas = dao.pegarMusica(nome);
 		System.out.println("---------------------------------------------\n"
-				+ "pegarMusica: ");
+				+ "Musica selecionada: ");
 		for (Album c : musicas) {
 			System.out.println(c.toString());
 
@@ -44,9 +54,20 @@ public class Album {
 	}
 	
 	
+	public Album(){
+		
+	}
+	
+	
+	public Album(String musicas, int id) {
+		super();
+		this.musicas = musicas;
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
-		return  musicas;
+		return id +" - " + musicas ;
 	}
 	
 	

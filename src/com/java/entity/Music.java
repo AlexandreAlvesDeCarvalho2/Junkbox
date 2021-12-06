@@ -57,7 +57,7 @@ public class Music {
 
 	
 	
-	public void exibirinformaçoes(String nome) {
+	public void exibirinformaçoes(int nome) {
 		MusicasDAO dao2 = DaoFactory.getMusicDAO();
 		System.out.println("---------------------------------------------"
 				+ "\nexibirinformaçoes:  ");
@@ -96,7 +96,7 @@ public class Music {
 	 */
 	@Override
 	public String toString() {
-		return 	" Musica: " + nome + "\n Artista(s): " + artista + " \n Album: "+ MUSICA_ALBUM ;
+		return 	" Musica: " + nome + "Artista(s): " + artista + " Album: "+ MUSICA_ALBUM ;
 	}
 
 }
