@@ -12,9 +12,13 @@ public abstract class DaoFactory {
 		public static BibliotecaDAO getBibliotecaDAO(){
 			return new BibliotecaDAOImpl();
 			}
+		
 		public static PlaylistDAO getPlaylistDAO(){
 			return new PlaylistDAOImpl();
 			}
 		
+		public static LoginDAO getLoginDAO(){
+			return new LoginDAOImpl();
+			}
 		
 }

@@ -1,7 +1,12 @@
 package com.java.test;
 
+import java.util.List;
+
+import com.java.DAO.DaoFactory;
+import com.java.DAO.LoginDAO;
 import com.java.entity.Album;
 import com.java.entity.Biblioteca;
+import com.java.entity.Login;
 import com.java.entity.Playlist;
 
 
@@ -14,19 +19,36 @@ public class testJunkbox {
 		Album album = new Album();
 		Biblioteca biblioteca = new Biblioteca();
 		Playlist playlist = new Playlist();
+		Login conectar = new Login();
 			
 		
 		// teste métodos JunkBox
 		
-		biblioteca.listarAlbum(); // Lista todos albuns da tabela T_ALBUM 
-		biblioteca.pegarAlbum(1); // busca album por ID da tabela T_ALBUM
+		//biblioteca.listarAlbum(); // Lista todos albuns da tabela T_ALBUM 
+		//biblioteca.pegarAlbum(1); // busca album por ID da tabela T_ALBUM
 		
 		
-		album.pegarMusica(11); // busca musica por ID da tabela T_MUSICAS
+		//album.pegarMusica(14); // busca musica por ID da tabela T_MUSICAS
 		
 		
-		playlist.addMusicToList(11); // adiciona música por ID na tabela T_PLAYLIST 
-		playlist.listarMusicasPlaylist();
+		//playlist.addMusicToList(14); // adiciona música por ID na tabela T_PLAYLIST 
+		//playlist.listarMusicasPlaylist();
+		
+		
+		//conectar.logar("alexandre@gmail", "123456");
+		
+			
+		LoginDAO dao = DaoFactory.getLoginDAO();
+			
+			List<Login> logins =  dao.BuscarLogin("alexandre@gmail.com", "123456");
+			
+			
+			System.out.println("---------------------------------------------\n"
+					+ "Seu login: " );
+			for (Login l : logins) {
+				System.out.println(l.toString());
+			}
+		
 		
 		
 		/* 			outros métodos	
@@ -38,7 +60,7 @@ public class testJunkbox {
 		 *	
 		 */
 		
-	
+		
 
 	}
 
