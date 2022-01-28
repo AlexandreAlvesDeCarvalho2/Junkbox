@@ -2,12 +2,12 @@ package com.java.test;
 
 import java.util.List;
 
-import com.java.DAO.DaoFactory;
-import com.java.DAO.LoginDAO;
-import com.java.entity.Album;
-import com.java.entity.Biblioteca;
-import com.java.entity.Login;
-import com.java.entity.Playlist;
+import com.junkbox.DAO.DaoFactory;
+import com.junkbox.DAO.LoginDAO;
+import com.junkbox.entity.Album;
+import com.junkbox.entity.Biblioteca;
+import com.junkbox.entity.Login;
+import com.junkbox.entity.Playlist;
 
 
 
